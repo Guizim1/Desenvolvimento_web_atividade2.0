@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Gêneros</title>
+</head>
+<body>
+    <h2>{{title}}</h2>
+    <p><a href="/">Retornar ao Índice</a></p>
+    <div class="container">
+        <form method="post" class="formentry">
+            <div class="linha">
+                <label for="tipo">
+                    Tipo:
+                    <input type="text" name="tipo" value="{{genero['tipo']}}" maxlength="30" required>
+                </label>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>
