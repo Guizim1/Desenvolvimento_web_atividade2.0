@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Personagem</title>
+</head>
+<body>
+    <h2>{{title}}</h2>
+    <p><a href="/">Retornar ao Índice</a></p>
+    <div class="container">
+        <form method="post" class="formentry">
+            <div class="linha">
+                <label for="nome">
+                    Nome:
+                    <input type="text" name="nome" value="{{personagem['nome']}}" maxlength="60" required>
+                </label>
+            </div>
+
+            <div class="linha">
+                <label for="poder">
+                    Poder:
+                    <input type="text" name="poder" value="{{personagem['poder']}}" maxlength="255" required>
+                </label>
+            </div>
+
+            <div class="linha">
+                <label for="arma">
+                    Arma:
+                    <input type="text" name="arma" value="{{personagem['arma']}}" maxlength="30" required>
+                </label>
+            </div>
+
+            <div class="linha">
+                <label for="forca">
+                    Força:
+                    <input type="number" name="forca" value="{{personagem['forca']}}" min="0" max="100" required>
+                </label>
+            </div>
+            <div class="linha">
+                <label for="agilidade">
+                    Agilidade:
+                    <input type="number" name="agilidade" value="{{personagem['agilidade']}}" min="0" max="100" required>
+                </label>
+            </div>
+
+            <div class="linha">
+                <label for="nivel">
+                    Nível:
+                    <input type="number" name="nivel" value="{{personagem['nivel']}}" min="1" max="100" required>
+                </label>
+            </div>
+            <div class="linha">
+                <label for="grupo">
+                    Grupo:
+                    {% if grupos.__len__() == 0 %}
+                    Não há <a href="/grupos">Grupos</a> Registrados!
+                    {% else %}
+                    <select name="grupo" id="grupo" required>
+                        {% for grupo in grupos %}
+                        <option value="{{grupo['id']}}">{{grupo['nome']}}</option>
+                        {% endfor %}
+                    </select>
+                    {% endif %}
+                </label>
+            </div>
+
+            <div class="linha">
+                <label for="missao">
+                    Missões:
+                    {% if missoes.__len__() == 0 %}
+                    Não há <a href="/missoes">Missões</a> Registradas!
+                    {% else %}
+                    <select name="miss" id="miss" required>
+                        {% for miss in missoes %}
+                        <option value="{{miss['id']}}">{{miss['objetivo']}}</option>
+                        {% endfor %}
+                    </select>
+                    {% endif %}
+                </label>
+            </div>
+            <div class="linha">
+                <label for="genero">
+                    Gênero:
+                    {% if generos.__len__() == 0 %}
+                    Não há <a href="/generos">Gêneros</a> Registrados!
+                    {% else %}
+                    <select name="gene" id="gene" required>
+                        {% for gene in generos %}
+                        <option value="{{gene['id']}}">{{gene['tipo']}}</option>
+                        {% endfor %}
+                    </select>
+                    {% endif %}
+                </label>
+            </div>
+            <div>
+                {% if grupos.__len__() == 0 or missoes.__len__() == 0 or generos.__len__() == 0 %}
+                <p>Registre as outras Entidades Obrigatórias antes de registrar um personagem</p>
+                {% else %}
+                <button type="submit">Enviar</button>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+</body>
+</html>
