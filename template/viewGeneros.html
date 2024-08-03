@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gêneros</title>
+</head>
+<body>
+    <div>
+        <a href="/">Retornar ao Índice</a>
+        {% if generos.__len__() == 0 %}
+        <h2>Não há Gêneros Registrados!</h2>
+        {% endif %}
+        <table border='1'>
+            <thead>
+                <th>ID</th>
+                <th>Tipo</th>
+            </thead>
+            <tbody>
+                {% for gen in generos %}
+                <tr>
+                    <td>{{gen['id']}}</td>
+                    <td>{{gen['tipo']}}</td>
+                    <td><a href="generos/editar/{{gen['id']}}">Editar</a></td>
+                    <td><a href="generos/remover/{{gen['id']}}">Apagar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="generos/novo">Adicionar novo Registro</a>
+    </div>
+</body>
+</html>
