@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missões</title>
+</head>
+<body>
+    <div>
+        <a href="/">Retornar ao Índice</a>
+        {% if missoes.__len__() == 0 %}
+        <h2>Não há Missões Registradas!</h2>
+        {% endif %}
+        <table border='1'>
+            <thead>
+                <th>ID</th>
+                <th>Objetivo</th>
+                <th>Descrição</th>
+                <th>Recompensa</th>
+            </thead>
+            <tbody>
+                {% for miss in missoes %}
+                <tr>
+                    <td>{{miss['id']}}</td>
+                    <td>{{miss['objetivo']}}</td>
+                    <td>{{miss['descricao']}}</td>
+                    <td>{{miss['recompensa']}}</td>
+                    <td><a href="missoes/editar/{{miss['id']}}">Editar</a></td>
+                    <td><a href="missoes/remover/{{miss['id']}}">Apagar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="missoes/novo">Adicionar nova Missão</a>
+    </div>
+</body>
+</html>
